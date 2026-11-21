@@ -1,0 +1,29 @@
+# Local stack: PostgreSQL + API (+ clinic portal dev server).
+#   docker compose -f infra/docker-compose.yml up --build
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: thelivu-dev-only
+      POSTGRES_DB: thelivu
+    ports: ["5432:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ../services/api/migrations/0001_init.up.sql:/docker-entrypoint-initdb.d/0001_init.sql:ro
+      - ./dev-seed.sql:/docker-entrypoint-initdb.d/0002_seed.sql:ro
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 3s
+      retries: 20
+  api:
+    build: ../services/api
+    depends_on:
+      db: {condition: service_healthy}
+    environment:
+      THELIVU_DATABASE_URL: postgres://thelivu_app:thelivu-app-dev@db:5432/thelivu
+      THELIVU_TOKEN_SECRET: dev-only-secret-change-me-dev-only-secret
+      THELIVU_ALLOWED_ORIGINS: http://localhost:5173
+      THELIVU_ENV: dev
+    ports: ["8080:8080"]
+volumes:
+  pgdata:

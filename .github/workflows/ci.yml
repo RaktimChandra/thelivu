@@ -1,0 +1,70 @@
+name: CI
+on:
+  push: {branches: [main]}
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  patient-app:
+    name: Patient app (Godot headless tests)
+    runs-on: ubuntu-24.04
+    env:
+      GODOT: 4.5.1
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot
+        run: |
+          curl -fsSL -o godot.zip "https://github.com/godotengine/godot-builds/releases/download/${GODOT}-stable/Godot_v${GODOT}-stable_linux.x86_64.zip"
+          unzip -q godot.zip && sudo mv Godot_v${GODOT}-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import
+        run: godot --headless --path apps/patient-app --import || true
+      - name: Tests (unit, contracts, i18n parity, end-to-end self-play)
+        run: godot --headless --path apps/patient-app res://tests/runner.tscn
+
+  api:
+    name: API (Go + PostgreSQL RLS integration)
+    runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:16
+        env: {POSTGRES_PASSWORD: ci}
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 5s --health-retries 20
+    defaults: {run: {working-directory: services/api}}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with: {go-version: '1.24', cache-dependency-path: services/api/go.sum}
+      - run: go vet ./...
+      - run: go test ./...
+      - name: Integration (migrations, RLS isolation, full HTTP flow)
+        env: {THELIVU_TEST_DATABASE_URL: "postgres://postgres:ci@localhost:5432/postgres"}
+        run: go test ./internal/server -run Integration -v
+
+  contracts:
+    name: Contracts (OpenAPI, module and media manifests)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install jsonschema pyyaml openapi-spec-validator
+      - run: python contracts/validate_contracts.py
+
+  clinic-portal:
+    name: Clinic portal (typecheck, tests, build)
+    runs-on: ubuntu-24.04
+    if: hashFiles('apps/clinic-portal/src/main.tsx') != ''
+    defaults: {run: {working-directory: apps/clinic-portal}}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm, cache-dependency-path: apps/clinic-portal/package-lock.json}
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build

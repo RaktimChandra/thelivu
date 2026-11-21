@@ -47,6 +47,8 @@ func sign_in(thelivu_id: String, pin: String) -> bool:
 		return false
 	Store.set_value("profile.patient_id", thelivu_id.strip_edges().to_upper(), false)
 	Store.set_value("profile.signed_in", true)
+	if thelivu_id.to_upper().contains("DEMO"):
+		prepare_demo_profile(I18n.lang)   # founder/clinic demos: show a realistic 2-week history
 	mark_signed_in_today()
 	return true
 

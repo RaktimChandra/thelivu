@@ -1,0 +1,304 @@
+openapi: 3.1.0
+info:
+  title: Thelivu API
+  version: 1.0.0
+  description: |
+    Backend for the Thelivu patient app and clinic portal. Every response for
+    patient data is scoped by PostgreSQL row-level security to the caller's clinic
+    (staff) or to the caller (patient). Errors use RFC 9457 problem+json.
+servers:
+  - url: https://api.thelivu.in
+  - url: http://localhost:8080
+security:
+  - bearer: []
+tags:
+  - {name: auth}
+  - {name: device, description: Patient app}
+  - {name: clinic, description: Clinic portal}
+paths:
+  /v1/auth/patient/login:
+    post:
+      tags: [auth]
+      security: []
+      summary: Patient sign-in with Thelivu ID and PIN (R1, R5)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [thelivu_id, pin]
+              additionalProperties: false
+              properties:
+                thelivu_id: {type: string, example: MEE-0412-K7}
+                pin: {type: string, pattern: '^[0-9]{4,6}$'}
+                device_id: {type: string}
+      responses:
+        '200':
+          description: Signed in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token: {type: string}
+                  patient_id: {type: string, format: uuid}
+                  display_name: {type: string}
+                  language: {enum: [en, ta, hi]}
+        '401': {$ref: '#/components/responses/Problem'}
+  /v1/auth/staff/login:
+    post:
+      tags: [auth]
+      security: []
+      summary: Clinician / admin sign-in
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              additionalProperties: false
+              properties:
+                email: {type: string, format: email}
+                password: {type: string}
+      responses:
+        '200':
+          description: Signed in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token: {type: string}
+                  role: {enum: [platform_admin, clinic_admin, clinician]}
+                  clinic_id: {type: string}
+                  name: {type: string}
+        '401': {$ref: '#/components/responses/Problem'}
+  /v1/telemetry/trials:batch:
+    post:
+      tags: [device]
+      summary: Upload trial events (idempotent on event_id) (R4, R15)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [trials]
+              additionalProperties: false
+              properties:
+                trials:
+                  type: array
+                  minItems: 1
+                  maxItems: 500
+                  items: {$ref: './schemas/trial-event.schema.json'}
+      responses:
+        '200':
+          description: Stored
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accepted: {type: integer}
+                  inserted: {type: integer}
+                  duplicates: {type: integer}
+        '422': {description: Per-trial validation problems keyed by index}
+  /v1/me/sessions/{id}:
+    put:
+      tags: [device]
+      summary: Create or update a training session (R2, R3)
+      parameters: [{name: id, in: path, required: true, schema: {type: string, format: uuid}}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [started_at]
+              properties:
+                started_at: {type: string, format: date-time}
+                ended_at: {type: string, format: date-time}
+                minutes: {type: number, minimum: 0, maximum: 600}
+                games: {type: integer, minimum: 0}
+                complete: {type: boolean}
+                focus_domain: {type: string}
+      responses:
+        '204': {description: Saved}
+  /v1/me/alerts:
+    post:
+      tags: [device]
+      summary: Patient pressed "I'm not feeling well"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [kind]
+              properties:
+                kind: {const: not_well}
+                context: {type: string, maxLength: 120}
+      responses:
+        '201': {description: Raised}
+  /v1/me/overrides:
+    get:
+      tags: [device]
+      summary: Clinician difficulty overrides for this patient (R16)
+      responses:
+        '200':
+          description: Overrides by module id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  overrides:
+                    type: object
+                    additionalProperties: {$ref: '#/components/schemas/Override'}
+  /v1/patients:
+    get:
+      tags: [clinic]
+      summary: Patient roster with today's activity (R2, R3, R10)
+      responses:
+        '200':
+          description: Patients visible to the caller
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  patients: {type: array, items: {$ref: '#/components/schemas/PatientSummary'}}
+    post:
+      tags: [clinic]
+      summary: Enrol a patient; returns the Thelivu ID derived from name + DOB (R1)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [display_name, date_of_birth, pin]
+              properties:
+                display_name: {type: string, minLength: 2}
+                date_of_birth: {type: string, format: date, description: Only the year is stored}
+                sex: {enum: [female, male, other, undisclosed]}
+                language: {enum: [en, ta, hi]}
+                study_arm: {enum: [intervention, control, none]}
+                pin: {type: string, pattern: '^[0-9]{4,6}$'}
+      responses:
+        '201':
+          description: Enrolled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: {type: string, format: uuid}
+                  thelivu_id: {type: string, example: MEE-0412-K7}
+  /v1/patients/{id}/progress:
+    get:
+      tags: [clinic]
+      summary: Daily series and per-game progression (R11, R13)
+      parameters:
+        - {name: id, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: days, in: query, schema: {type: integer, minimum: 1, maximum: 365, default: 30}}
+      responses:
+        '200':
+          description: Progress
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Progress'}
+        '404': {$ref: '#/components/responses/Problem'}
+  /v1/patients/{id}/modules/{module}/override:
+    put:
+      tags: [clinic]
+      summary: Set difficulty for one game (R16); audited
+      parameters:
+        - {name: id, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: module, in: path, required: true, schema: {type: string}}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/Override'}
+      responses:
+        '204': {description: Saved}
+        '422': {$ref: '#/components/responses/Problem'}
+  /v1/alerts:
+    get:
+      tags: [clinic]
+      summary: Open safety alerts for the clinic
+      responses:
+        '200': {description: Alerts}
+components:
+  securitySchemes:
+    bearer: {type: http, scheme: bearer, bearerFormat: JWT}
+  responses:
+    Problem:
+      description: RFC 9457 problem
+      content:
+        application/problem+json:
+          schema:
+            type: object
+            properties:
+              title: {type: string}
+              status: {type: integer}
+              detail: {type: string}
+              request_id: {type: string}
+  schemas:
+    Override:
+      type: object
+      required: [reason]
+      properties:
+        level: {type: integer, minimum: 1, maximum: 50}
+        locked: {type: boolean}
+        floor: {type: integer, minimum: 1}
+        ceiling: {type: integer, minimum: 1}
+        goal_scale: {type: number, minimum: 0.5, maximum: 2.0}
+        reason: {type: string, minLength: 3}
+    PatientSummary:
+      type: object
+      properties:
+        id: {type: string, format: uuid}
+        thelivu_id: {type: string}
+        display_name: {type: string}
+        language: {type: string}
+        status: {type: string}
+        study_arm: {type: [string, 'null']}
+        last_active: {type: [string, 'null'], format: date-time}
+        days_active_7: {type: integer}
+        trials_today: {type: integer}
+        signed_in_today: {type: boolean}
+        open_alerts: {type: integer}
+    Progress:
+      type: object
+      properties:
+        patient_id: {type: string}
+        days:
+          type: array
+          items:
+            type: object
+            properties:
+              day: {type: string, format: date}
+              trials: {type: integer}
+              sessions: {type: integer}
+              accuracy: {type: [number, 'null']}
+              rt_median_ms: {type: [number, 'null']}
+              omissions: {type: integer}
+              commissions: {type: integer}
+              minutes: {type: number}
+              complete: {type: boolean}
+        modules:
+          type: array
+          items:
+            type: object
+            properties:
+              day: {type: string}
+              module_id: {type: string}
+              level_max: {type: integer}
+              level_end: {type: integer}
+              accuracy: {type: number}
+              rt_median_ms: {type: [number, 'null']}
+              trials: {type: integer}

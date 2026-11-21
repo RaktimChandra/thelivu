@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thelivu.in/schemas/module/1.0",
+  "title": "Thelivu game module manifest (module.json)",
+  "type": "object",
+  "required": ["id", "domain", "version", "sdk", "entry", "levels", "themes", "default_theme", "trials"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^d[1-7]_[a-z0-9_]{2,40}$"},
+    "domain": {"enum": ["speed", "attention", "working_memory", "verbal", "visual", "reasoning", "social"]},
+    "status": {"enum": ["official", "alternative"], "default": "official"},
+    "replaces": {"type": "string"},
+    "order": {"type": "integer"},
+    "protocol_ref": {"type": "string"},
+    "version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+    "sdk": {"type": "string", "pattern": "^1\\.\\d+$"},
+    "entry": {"type": "string", "pattern": "\\.gd$"},
+    "levels": {"type": "string", "pattern": "\\.json$"},
+    "themes": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "default_theme": {"type": "string"},
+    "trials": {"type": "object", "required": ["practice", "main"],
+      "properties": {"practice": {"type": "integer", "minimum": 1}, "main": {"type": "integer", "minimum": 4}}},
+    "start_level": {"type": "integer", "minimum": 1},
+    "minutes": {"type": "number", "minimum": 1},
+    "mechanism": {"type": "string"},
+    "metrics": {"type": "array", "items": {"type": "string"}},
+    "stair_success": {"type": "string"},
+    "research": {"type": "string"}
+  }
+}

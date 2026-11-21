@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thelivu.in/schemas/trial-event/1.0",
+  "title": "Thelivu trial event",
+  "description": "One trial of one game, emitted by GameModule.complete_trial() and ingested by POST /v1/telemetry/trials:batch.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id", "session_id", "module_id", "module_version", "theme_id", "level", "index", "practice", "outcome", "correct", "rt_ms", "t_onset_ms", "recorded_at", "schema_version"],
+  "properties": {
+    "event_id": {"type": "string", "format": "uuid"},
+    "session_id": {"type": "string", "format": "uuid"},
+    "module_id": {"type": "string", "pattern": "^d[1-7]_[a-z0-9_]{2,40}$"},
+    "module_version": {"type": "string"},
+    "theme_id": {"type": "string"},
+    "level": {"type": "integer", "minimum": 1, "maximum": 50},
+    "index": {"type": "integer", "minimum": 0},
+    "practice": {"type": "boolean"},
+    "outcome": {"enum": ["correct", "wrong", "omission", "hit", "miss", "false_alarm", "correct_reject"],
+      "description": "wrong/false_alarm = commission error; omission/miss = omission error (startup requirement R15)"},
+    "correct": {"type": "boolean"},
+    "rt_ms": {"type": "integer", "minimum": -1, "description": "-1 when there was no response"},
+    "t_onset_ms": {"type": "integer", "minimum": 0, "description": "Stimulus onset since block start, paused time excluded"},
+    "soft_goal_ms": {"type": "integer", "minimum": 0},
+    "stair_success": {"type": "boolean"},
+    "stimulus": {"type": "object", "description": "Module-specific stimulus description (max 4 KB)"},
+    "response": {"type": "object", "description": "Module-specific response description (max 4 KB)"},
+    "recorded_at": {"type": "string", "format": "date-time"},
+    "schema_version": {"type": "string", "pattern": "^1\\."}
+  }
+}

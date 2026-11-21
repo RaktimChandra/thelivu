@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thelivu.in/schemas/media-manifest/1.0",
+  "title": "Real-human media register (apps/patient-app/assets/media/manifest.json)",
+  "type": "object",
+  "required": ["schema_version", "assets"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "assets": {"type": "array", "items": {
+      "type": "object",
+      "required": ["id", "file", "kind", "source", "consent", "status"],
+      "properties": {
+        "id": {"type": "string"},
+        "file": {"type": "string"},
+        "kind": {"enum": ["hand", "face", "object"]},
+        "source": {"enum": ["generated", "licensed_dataset", "own_photoshoot"]},
+        "generator": {"type": "object"},
+        "dataset": {"type": "object"},
+        "consent": {"type": "string"},
+        "intended": {"type": "object"},
+        "validation": {"type": "object"},
+        "status": {"enum": ["draft", "in_validation", "approved", "rejected"]}
+      }
+    }}
+  }
+}
