@@ -1,0 +1,20 @@
+{
+  "id": "d2_clock_test",
+  "domain": "attention",
+  "status": "official",
+  "order": 1,
+  "protocol_ref": "D2-G1",
+  "version": "1.0.0",
+  "sdk": "1.0",
+  "entry": "clock_test.gd",
+  "levels": "levels.json",
+  "themes": ["wall", "railway", "meter"],
+  "default_theme": "wall",
+  "trials": {"practice": 24, "main": 90},
+  "start_level": 2,
+  "minutes": 3,
+  "mechanism": "Sustained attention (Mackworth clock): a hand moves one step at a time; tap when it jumps two steps at once.",
+  "metrics": ["hit", "miss (omission)", "false_alarm (commission)", "rt_ms", "vigilance decrement (hit rate first vs last third, server)", "d_prime (server)"],
+  "stair_success": "hit (and no false alarm); correct rejections do not move the staircase",
+  "research": "docs/research/THL-RES-003-domain2-attention.md#41"
+}

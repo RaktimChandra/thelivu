@@ -1,0 +1,17 @@
+{
+  "_doc": "ticks: marks on the dial (more marks = smaller, harder-to-see jumps); step_s: time per step; p_jump: chance a step is a double jump (rarer = harder vigilance); window: steps allowed to respond after a jump.",
+  "levels": [
+    {"ticks": 24, "step_s": 1.30, "p_jump": 0.20, "window": 2},
+    {"ticks": 24, "step_s": 1.15, "p_jump": 0.18, "window": 2},
+    {"ticks": 36, "step_s": 1.05, "p_jump": 0.16, "window": 2},
+    {"ticks": 36, "step_s": 0.95, "p_jump": 0.14, "window": 2},
+    {"ticks": 48, "step_s": 0.90, "p_jump": 0.12, "window": 2},
+    {"ticks": 48, "step_s": 0.85, "p_jump": 0.11, "window": 2},
+    {"ticks": 60, "step_s": 0.80, "p_jump": 0.10, "window": 2},
+    {"ticks": 60, "step_s": 0.75, "p_jump": 0.09, "window": 1},
+    {"ticks": 72, "step_s": 0.70, "p_jump": 0.08, "window": 1},
+    {"ticks": 72, "step_s": 0.65, "p_jump": 0.07, "window": 1},
+    {"ticks": 90, "step_s": 0.62, "p_jump": 0.06, "window": 1},
+    {"ticks": 100, "step_s": 0.60, "p_jump": 0.06, "window": 1}
+  ]
+}

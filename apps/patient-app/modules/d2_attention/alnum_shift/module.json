@@ -1,0 +1,20 @@
+{
+  "id": "d2_alnum_shift",
+  "domain": "attention",
+  "status": "official",
+  "order": 3,
+  "protocol_ref": "D2-G3",
+  "version": "1.0.0",
+  "sdk": "1.0",
+  "entry": "alnum_shift.gd",
+  "levels": "levels.json",
+  "themes": ["card", "ticket", "token"],
+  "default_theme": "card",
+  "trials": {"practice": 8, "main": 28},
+  "start_level": 1,
+  "minutes": 3,
+  "mechanism": "Attention switching (Rogers & Monsell 1995 alternating-runs, cued by position): top = is the number odd or even; bottom = is the letter a vowel or a consonant (in the patient's own script).",
+  "metrics": ["rt_ms", "correct", "wrong (commission)", "omission", "switch cost and congruency cost (server)"],
+  "stair_success": "correct AND rt <= soft goal",
+  "research": "docs/research/THL-RES-003-domain2-attention.md#43"
+}

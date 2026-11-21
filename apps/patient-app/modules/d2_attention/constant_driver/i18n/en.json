@@ -1,0 +1,14 @@
+{
+  "name": "The Constant Driver",
+  "goal": "Tap BRAKE when the brake lights come on. Do not brake for indicators or boards.",
+  "tip": "Keep your eyes on the vehicle's lights. Red on both sides means brake; one blinking orange light means wait.",
+  "voice": ["You are driving behind another vehicle.", "When its two red brake lights come on, tap BRAKE quickly.", "If only one orange light blinks, or a board passes by, do not brake.", "Later, a yellow speed-breaker sign also means brake."],
+  "prompt": "Brake only for brake lights",
+  "brake": "BRAKE",
+  "too_early": "Nothing to brake for yet. Wait for the lights.",
+  "no_brake_indicator": "That was an indicator. No need to brake.",
+  "no_brake_board": "That was a board. No need to brake.",
+  "missed_brake": "Those were brake lights.",
+  "missed_breaker": "That was a speed-breaker sign.",
+  "good_ignore": "Good, you kept going"
+}

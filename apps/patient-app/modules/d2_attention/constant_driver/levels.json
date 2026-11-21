@@ -1,0 +1,17 @@
+{
+  "_doc": "speed: road animation speed; window_s: how long a brake light / sign stays (response window); gap_lo/gap_hi: plain driving before each event (unpredictable timing); lure: share of no-go events that are look-alike lights (indicators) instead of boards; signs: speed-breaker signs are a second go target; fog: 0-1 haze; night: dark scene, lights only.",
+  "levels": [
+    {"speed": 0.8, "window_s": 1.9, "gap_lo": 1.4, "gap_hi": 2.8, "lure": 0.0, "signs": false, "fog": 0.0, "night": false},
+    {"speed": 0.9, "window_s": 1.7, "gap_lo": 1.3, "gap_hi": 2.6, "lure": 0.1, "signs": false, "fog": 0.0, "night": false},
+    {"speed": 1.0, "window_s": 1.55, "gap_lo": 1.2, "gap_hi": 2.5, "lure": 0.25, "signs": false, "fog": 0.0, "night": false},
+    {"speed": 1.1, "window_s": 1.4, "gap_lo": 1.1, "gap_hi": 2.4, "lure": 0.35, "signs": false, "fog": 0.0, "night": false},
+    {"speed": 1.2, "window_s": 1.3, "gap_lo": 1.0, "gap_hi": 2.3, "lure": 0.4, "signs": true, "fog": 0.0, "night": false},
+    {"speed": 1.3, "window_s": 1.2, "gap_lo": 1.0, "gap_hi": 2.2, "lure": 0.45, "signs": true, "fog": 0.15, "night": false},
+    {"speed": 1.4, "window_s": 1.1, "gap_lo": 0.9, "gap_hi": 2.1, "lure": 0.5, "signs": true, "fog": 0.3, "night": false},
+    {"speed": 1.5, "window_s": 1.0, "gap_lo": 0.9, "gap_hi": 2.0, "lure": 0.5, "signs": true, "fog": 0.45, "night": false},
+    {"speed": 1.6, "window_s": 0.95, "gap_lo": 0.8, "gap_hi": 2.0, "lure": 0.55, "signs": true, "fog": 0.0, "night": true},
+    {"speed": 1.7, "window_s": 0.9, "gap_lo": 0.8, "gap_hi": 1.9, "lure": 0.6, "signs": true, "fog": 0.2, "night": true},
+    {"speed": 1.8, "window_s": 0.8, "gap_lo": 0.7, "gap_hi": 1.8, "lure": 0.6, "signs": true, "fog": 0.35, "night": true},
+    {"speed": 1.9, "window_s": 0.7, "gap_lo": 0.7, "gap_hi": 1.7, "lure": 0.65, "signs": true, "fog": 0.45, "night": true}
+  ]
+}

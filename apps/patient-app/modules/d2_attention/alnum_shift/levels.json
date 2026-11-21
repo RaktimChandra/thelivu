@@ -1,0 +1,15 @@
+{
+  "_doc": "mode: number | letter (single task) | alt2 (two top, two bottom, predictable) | random (unpredictable switches); pair: show a digit AND a letter (the other one is irrelevant); hint: highlight the words that matter on the buttons; congruent_p: chance the irrelevant character points to the same button; goal_s: soft time goal.",
+  "levels": [
+    {"mode": "number", "pair": false, "hint": true,  "congruent_p": 0.5,  "goal_s": 3.0},
+    {"mode": "letter", "pair": false, "hint": true,  "congruent_p": 0.5,  "goal_s": 3.0},
+    {"mode": "alt2",   "pair": true,  "hint": true,  "congruent_p": 0.5,  "goal_s": 2.8},
+    {"mode": "alt2",   "pair": true,  "hint": false, "congruent_p": 0.5,  "goal_s": 2.6},
+    {"mode": "random", "pair": true,  "hint": true,  "congruent_p": 0.5,  "goal_s": 2.5},
+    {"mode": "random", "pair": true,  "hint": false, "congruent_p": 0.5,  "goal_s": 2.3},
+    {"mode": "random", "pair": true,  "hint": false, "congruent_p": 0.3,  "goal_s": 2.1},
+    {"mode": "random", "pair": true,  "hint": false, "congruent_p": 0.25, "goal_s": 1.9},
+    {"mode": "random", "pair": true,  "hint": false, "congruent_p": 0.25, "goal_s": 1.75},
+    {"mode": "random", "pair": true,  "hint": false, "congruent_p": 0.2,  "goal_s": 1.6}
+  ]
+}

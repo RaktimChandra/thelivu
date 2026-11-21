@@ -28,3 +28,4 @@ go.work.sum
 Thumbs.db
 .vscode/
 .idea/
+viz/architecture-3d/dist/

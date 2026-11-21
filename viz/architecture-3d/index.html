@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thelivu · 3D architecture</title>
+<style>
+  :root { --ink:#16302b; --muted:#4f625d; --teal:#1e7568; --turmeric:#d49a33; --paper:#fbfcfb; --line:#d2deda; --night:#152f45; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: var(--ink); background: #e8f0ee; overflow: hidden; }
+  #app { position: fixed; inset: 0; }
+  #app canvas { display: block; }
+  .labels { position: absolute; inset: 0; pointer-events: none; }
+  .lbl { font-size: 12px; font-weight: 600; white-space: nowrap; padding: 3px 8px; border-radius: 99px; background: rgba(251,252,251,.9); border: 1px solid var(--line); color: var(--ink); }
+  .lbl.bld { background: var(--night); color: #fff; border: 0; font-size: 12.5px; letter-spacing: .4px; padding: 5px 12px; }
+  .lbl.room { font-size: 11px; background: rgba(211,234,228,.95); }
+  .lbl.floor { background: transparent; border: 0; color: var(--muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: .8px; }
+  .lbl.note { font-size: 10.5px; font-weight: 500; color: var(--muted); }
+  header { position: fixed; top: 16px; left: 16px; right: 16px; display: flex; gap: 12px; align-items: center; pointer-events: none; }
+  header .brand { pointer-events: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; box-shadow: 0 4px 18px rgba(22,48,43,.08); }
+  header .brand b { font-size: 16px; } header .brand div { font-size: 12.5px; color: var(--muted); }
+  .btns { margin-left: auto; display: flex; gap: 8px; pointer-events: auto; flex-wrap: wrap; justify-content: flex-end; }
+  button { font: inherit; font-size: 13.5px; font-weight: 600; border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 10px; padding: 8px 13px; cursor: pointer; }
+  button:hover { border-color: var(--teal); }
+  button.primary { background: var(--teal); color: #fff; border-color: var(--teal); }
+  button.off { opacity: .55; }
+  button:focus-visible { outline: 3px solid var(--turmeric); outline-offset: 2px; }
+  #legend { position: fixed; left: 16px; bottom: 16px; display: flex; flex-wrap: wrap; gap: 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 9px 12px; font-size: 12.5px; max-width: calc(100vw - 32px); }
+  #legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  #legend i.flow { background: linear-gradient(90deg, #1e7568, #d49a33); border-radius: 99px; height: 6px; vertical-align: 2px; }
+  #info, #tour { position: fixed; right: 16px; width: min(360px, calc(100vw - 32px)); background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; box-shadow: 0 10px 30px rgba(22,48,43,.12); transform: translateY(12px); opacity: 0; pointer-events: none; transition: .25s; }
+  #info { top: 92px; } #tour { bottom: 16px; }
+  #info.open, #tour.open { opacity: 1; transform: none; pointer-events: auto; }
+  #info h2 { font-size: 18px; margin: 8px 0 2px; } #info .layer { font-size: 12.5px; color: var(--muted); }
+  #info p, #tour p { font-size: 14px; line-height: 1.5; margin: 10px 0; }
+  #info code { display: block; font-size: 12px; background: #eef4f2; padding: 6px 8px; border-radius: 8px; word-break: break-all; }
+  .ihead { display: flex; justify-content: space-between; align-items: center; }
+  .chip { color: #fff; font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 99px; }
+  #iclose { border: 0; font-size: 20px; padding: 0 6px; background: none; }
+  #tour h3 { margin: 4px 0 0; font-size: 17px; } .tstep { font-size: 12px; color: var(--muted); font-weight: 700; }
+  .tbtns { display: flex; gap: 8px; }
+  #tip { position: fixed; pointer-events: none; background: var(--night); color: #fff; font-size: 12.5px; padding: 4px 9px; border-radius: 8px; opacity: 0; transition: opacity .12s; z-index: 5; }
+  @media (max-width: 700px) {
+    header { flex-direction: column; align-items: stretch; } .btns { margin-left: 0; justify-content: flex-start; }
+    #info { top: auto; bottom: 70px; } #legend { font-size: 11px; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<header>
+  <div class="brand"><b>Thelivu · system architecture</b><div>Drag to orbit · scroll or pinch to zoom · tap a block for details</div></div>
+  <div class="btns">
+    <button id="btn-tour" class="primary">Guided tour</button>
+    <button id="btn-home">Reset view</button>
+    <button id="btn-flow">Data flow</button>
+    <button id="btn-glb">Download 3D file (.glb)</button>
+  </div>
+</header>
+<div id="legend"></div>
+<div id="info" aria-live="polite"></div>
+<div id="tour" aria-live="polite"></div>
+<div id="tip"></div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

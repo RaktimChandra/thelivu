@@ -1,0 +1,10 @@
+{
+  "name": "The Clock Test",
+  "goal": "The hand moves one mark at a time. Tap JUMP when it moves two marks at once.",
+  "tip": "Rest your eyes on the whole clock and count softly in your mind: one, one, one. A jump feels like a skip.",
+  "voice": ["Watch the clock. The hand moves one small step at a time.", "Sometimes it jumps two steps at once.", "When it jumps, tap JUMP.", "Jumps are rare, so stay with the clock."],
+  "prompt": "Watch for a jump",
+  "jump": "JUMP",
+  "no_jump": "That was a normal step",
+  "missed": "That one was a jump"
+}
