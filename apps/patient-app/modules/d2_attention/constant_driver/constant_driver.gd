@@ -22,7 +22,7 @@ func _build() -> void:
 	_road.size_flags_vertical = SIZE_EXPAND_FILL
 	_road.custom_minimum_size.y = Ui.s(560)
 	stage.add_child(_road)
-	_btn = Ui.button(ctx.t("brake"), "warm", Ui.SIZE_XL, 170)
+	_btn = Ui.button(ctx.t("brake"), "action", Ui.SIZE_XL, 170)
 	_btn.pressed.connect(_on_brake)
 	stage.add_child(_btn)
 

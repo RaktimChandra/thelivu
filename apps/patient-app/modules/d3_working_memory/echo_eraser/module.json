@@ -1,0 +1,20 @@
+{
+  "id": "d3_echo_eraser",
+  "domain": "working_memory",
+  "status": "official",
+  "order": 1,
+  "protocol_ref": "D3-G1",
+  "version": "1.0.0",
+  "sdk": "1.0",
+  "entry": "echo_eraser.gd",
+  "levels": "levels.json",
+  "themes": ["digits", "fruit", "vehicles"],
+  "default_theme": "digits",
+  "trials": {"practice": 3, "main": 10},
+  "start_level": 1,
+  "minutes": 4,
+  "mechanism": "Running memory span (updating): items arrive one by one in a list of unknown length; when it stops, recall only the LAST k items in order.",
+  "metrics": ["items correct in position (partial credit)", "whole-list correct", "recall rt", "window size k reached"],
+  "stair_success": "all k items in the right order",
+  "research": "docs/research/THL-RES-004-domain3-working-memory.md#41"
+}

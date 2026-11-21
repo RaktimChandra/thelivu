@@ -1,0 +1,20 @@
+{
+  "id": "d3_vector_shift",
+  "domain": "working_memory",
+  "status": "official",
+  "order": 2,
+  "protocol_ref": "D3-G2",
+  "version": "1.0.0",
+  "sdk": "1.0",
+  "entry": "vector_shift.gd",
+  "levels": "levels.json",
+  "themes": ["kolam", "map", "board"],
+  "default_theme": "kolam",
+  "trials": {"practice": 3, "main": 10},
+  "start_level": 1,
+  "minutes": 4,
+  "mechanism": "Spatial working-memory updating: see where a token starts, then follow arrows in your mind while it is hidden; tap where it ends.",
+  "metrics": ["correct cell", "distance from the right cell (cells)", "rt_ms", "moves held"],
+  "stair_success": "correct cell",
+  "research": "docs/research/THL-RES-004-domain3-working-memory.md#42"
+}

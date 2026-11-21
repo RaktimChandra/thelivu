@@ -117,5 +117,6 @@
   "fb.correct": "सही!",
   "fb.not_quite": "इस बार नहीं",
   "fb.level_up": "स्तर {n}",
-  "fb.great_speed": "सही, और तेज़!"
+  "fb.great_speed": "सही, और तेज़!",
+  "common.undo": "पूर्ववत"
 }

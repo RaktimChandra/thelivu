@@ -1,0 +1,16 @@
+{
+  "name": "Alphanumeric Shift",
+  "goal": "Top half: is the number odd or even? Bottom half: is the letter a vowel or a consonant?",
+  "tip": "First look where the card is. Top means think about the number; bottom means think about the letter. Ignore the other one.",
+  "voice": ["Look where the card appears.", "If it is in the top half, decide whether the number is odd or even.", "If it is in the bottom half, decide whether the letter is a vowel or a consonant.", "Left button for odd or vowel. Right button for even or consonant."],
+  "top_cue": "NUMBER",
+  "bottom_cue": "LETTER",
+  "odd": "Odd",
+  "even": "Even",
+  "vowel": "Vowel",
+  "consonant": "Consonant",
+  "wrong_number": "Top half: think about the number",
+  "wrong_letter": "Bottom half: think about the letter",
+  "vowels": ["A", "E", "I", "O", "U"],
+  "consonants": ["B", "C", "D", "F", "G", "H", "K", "L", "M", "N", "P", "R", "S", "T", "V", "W", "Y"]
+}

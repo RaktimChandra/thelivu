@@ -1,0 +1,10 @@
+{
+  "name": "Vector Shifting",
+  "goal": "Remember where the token starts, follow the arrows in your mind, and tap where it ends.",
+  "tip": "Keep a finger-point in your mind's eye and move it with each arrow. Do not try to remember all the arrows, only where the token is now.",
+  "voice": ["Look where the token starts. Then it hides.", "Arrows will show one at a time. Move the token in your mind with each arrow.", "An arrow with times two means two steps.", "At the end, tap the square where the token is now."],
+  "start_here": "It starts here",
+  "where_now": "Where is it now?",
+  "close": "Very close, one square away",
+  "here_it_was": "It ended here, in green"
+}

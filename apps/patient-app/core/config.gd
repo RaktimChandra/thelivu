@@ -3,7 +3,7 @@
 class_name AppConfig
 extends RefCounted
 
-const APP_VERSION := "0.1.0"
+const APP_VERSION := "0.2.0"
 const SDK_VERSION := "1.0"
 const SCHEMA_VERSION := "1.0"
 

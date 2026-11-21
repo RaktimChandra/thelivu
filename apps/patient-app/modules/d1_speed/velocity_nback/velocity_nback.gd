@@ -51,7 +51,7 @@ func _build() -> void:
 	area.add_child(_interlude)
 	area.resized.connect(_layout.bind(area))
 	_layout.call_deferred(area)
-	_match_btn = Ui.button(ctx.t("match"), "warm", Ui.SIZE_XL, 170)
+	_match_btn = Ui.button(ctx.t("match"), "action", Ui.SIZE_XL, 170)
 	_match_btn.pressed.connect(_on_match)
 	stage.add_child(_match_btn)
 

@@ -24,7 +24,7 @@ func _build() -> void:
 	_dial.theme_data = ctx.theme.data
 	_dial.custom_minimum_size = Vector2(Ui.s(560), Ui.s(560))
 	c.add_child(_dial)
-	_btn = Ui.button(ctx.t("jump"), "warm", Ui.SIZE_XL, 170)
+	_btn = Ui.button(ctx.t("jump"), "action", Ui.SIZE_XL, 170)
 	_btn.pressed.connect(_on_tap)
 	stage.add_child(_btn)
 

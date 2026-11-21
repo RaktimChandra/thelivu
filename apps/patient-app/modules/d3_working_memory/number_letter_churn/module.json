@@ -1,0 +1,20 @@
+{
+  "id": "d3_number_letter_churn",
+  "domain": "working_memory",
+  "status": "official",
+  "order": 3,
+  "protocol_ref": "D3-G3",
+  "version": "1.0.0",
+  "sdk": "1.0",
+  "entry": "number_letter_churn.gd",
+  "levels": "levels.json",
+  "themes": ["tiles", "cards", "beads"],
+  "default_theme": "tiles",
+  "trials": {"practice": 3, "main": 10},
+  "start_level": 1,
+  "minutes": 4,
+  "mechanism": "Working-memory manipulation: numbers and letters appear mixed; tap the numbers in order, then the letters in your script's alphabet order.",
+  "metrics": ["items correct in position", "whole sequence correct", "rt_ms", "length held"],
+  "stair_success": "whole sequence correct",
+  "research": "docs/research/THL-RES-004-domain3-working-memory.md#43"
+}

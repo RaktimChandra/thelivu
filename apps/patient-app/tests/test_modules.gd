@@ -6,12 +6,18 @@ const LEVEL_FIELDS := {
 	"d1_velocity_nback": ["n", "items", "show_s", "gap_s", "lure"],
 	"d1_speeded_sort": ["bins", "rule", "switch", "goal_s"],
 	"d1_plate_check": ["change", "exposure_s", "goal_s"],
+	"d2_clock_test": ["ticks", "step_s", "p_jump", "window"],
+	"d2_constant_driver": ["speed", "window_s", "gap_lo", "gap_hi", "lure", "signs", "fog", "night"],
+	"d2_alnum_shift": ["mode", "pair", "hint", "congruent_p", "goal_s"],
+	"d3_echo_eraser": ["k", "len_lo", "len_hi", "show_s"],
+	"d3_vector_shift": ["grid", "moves", "arrow_s", "double", "no_backtrack"],
+	"d3_number_letter_churn": ["length", "numbers", "show_s", "decoys", "guide"],
 }
 
 
 func test_registry_has_domain1(t) -> void:
 	t.check(Modules.errors().is_empty(), "registry errors: %s" % str(Modules.errors()))
-	var ids := Modules.by_domain("speed", true).map(func(m): return m.id)
+	var ids := Modules.all().map(func(m): return m.id)
 	for id in LEVEL_FIELDS:
 		t.check(id in ids, "module %s registered" % id)
 	t.eq(Modules.by_domain("speed").size(), 3, "three official Domain 1 games")
@@ -98,3 +104,101 @@ func test_plates(t) -> void:
 		for ch in ["obvious", "lookalike", "transpose"]:
 			var b: String = pc.changed_plate(rng, a, ch)
 			t.check(b != a and b.length() == 10, "%s change differs: %s %s" % [ch, a, b])
+
+
+func test_domain2_official(t) -> void:
+	t.eq(Modules.by_domain("attention").size(), 3, "three Domain 2 games")
+
+
+func test_driver_events(t) -> void:
+	var dr: Script = load(Modules.get_manifest("d2_constant_driver").dir + "/constant_driver.gd")
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 5
+	var go := 0
+	var lures := 0
+	for i in 4000:
+		var e: String = dr.pick_event(rng, true, 0.6)
+		if e in ["brake", "breaker"]:
+			go += 1
+		elif e == "indicator":
+			lures += 1
+	t.check(go > 1850 and go < 2150, "half go events (%d)" % go)
+	t.check(lures > 1050 and lures < 1350, "60%% of no-go are look-alike lights (%d)" % lures)
+	rng.seed = 6
+	for i in 500:
+		t.check(dr.pick_event(rng, false, 0.0) in ["brake", "board"], "no signs or lures at level 1")
+
+
+func test_alnum_stimuli(t) -> void:
+	var al: Script = load(Modules.get_manifest("d2_alnum_shift").dir + "/alnum_shift.gd")
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 9
+	var vowels := ["அ", "ஆ", "இ"]
+	var cons := ["க்", "ச்", "ட்"]
+	var incon := 0
+	for i in 2000:
+		var rule: String = ["number", "letter"][i % 2]
+		var s: Dictionary = al.make_stimulus(rng, rule, true, 0.25, vowels, cons)
+		var parts: PackedStringArray = s.text.split("  ")
+		var digit := -1
+		var letter := ""
+		for part in parts:
+			if part.is_valid_int():
+				digit = int(part)
+			else:
+				letter = part
+		var num_side := 0 if digit % 2 == 1 else 1
+		var let_side := 0 if letter in vowels else 1
+		t.eq(s.answer, num_side if rule == "number" else let_side, "answer follows the cued rule")
+		t.eq(s.congruent, num_side == let_side, "congruency flag")
+		if not s.congruent:
+			incon += 1
+	t.check(incon > 1350 and incon < 1650, "about 75%% incongruent (%d)" % incon)
+	var r := ""
+	var switches := 0
+	for i in 1000:
+		var n: String = al.pick_rule(rng, "random", i, r)
+		if r != "" and n != r:
+			switches += 1
+		r = n
+	t.check(switches > 420 and switches < 580, "random mode switches about half the time (%d)" % switches)
+	t.eq(al.pick_rule(rng, "alt2", 0, ""), "number")
+	t.eq(al.pick_rule(rng, "alt2", 2, "number"), "letter")
+
+
+func test_domain3(t) -> void:
+	t.eq(Modules.by_domain("working_memory").size(), 3, "three Domain 3 games")
+	var ee: Script = load(Modules.get_manifest("d3_echo_eraser").dir + "/echo_eraser.gd")
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 21
+	for i in 300:
+		var s: Array = ee.make_stream(rng, 9, 12)
+		for j in range(1, s.size()):
+			t.check(s[j] != s[j - 1], "no immediate repeats")
+	var sc: Dictionary = ee.score_positions([3, 1, 4], [3, 4, 1])
+	t.eq(sc.correct, 1, "strict serial scoring")
+	var vs: Script = load(Modules.get_manifest("d3_vector_shift").dir + "/vector_shift.gd")
+	for n in [3, 4, 5, 6]:
+		for m in [2, 5, 8]:
+			for dbl in [false, true]:
+				var plan: Dictionary = vs.make_path(rng, n, m, dbl, true)
+				var pos: Vector2i = plan.start
+				var prev := ""
+				for mv in plan.moves:
+					pos += vs.DIRS[mv.dir] * int(mv.steps)
+					t.check(pos.x >= 0 and pos.y >= 0 and pos.x < n and pos.y < n, "path stays on the grid")
+					t.check(prev == "" or vs.DIRS[mv.dir] != -vs.DIRS[prev], "no immediate backtrack")
+					prev = mv.dir
+				t.eq(pos, plan.end, "end matches the replayed path")
+				t.eq(plan.moves.size(), m, "move count")
+	var ch: Script = load(Modules.get_manifest("d3_number_letter_churn").dir + "/number_letter_churn.gd")
+	var alpha := ["அ", "ஆ", "இ", "ஈ", "உ", "ஊ"]
+	for i in 300:
+		var set_: Dictionary = ch.make_set(rng, 6, 3, alpha)
+		t.eq(set_.shown.size(), 6, "length")
+		var o: Array = set_.ordered
+		t.check(o[0] is int and o[1] is int and o[2] is int and o[0] < o[1] and o[1] < o[2], "numbers ascending first")
+		t.check(alpha.find(o[3]) < alpha.find(o[4]) and alpha.find(o[4]) < alpha.find(o[5]), "letters in script order")
+		var d: Array = ch.make_decoys(rng, set_.shown, 2, alpha)
+		for x in d:
+			t.check(x not in set_.shown, "decoys were not shown")

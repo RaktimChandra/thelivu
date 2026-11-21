@@ -117,5 +117,6 @@
   "fb.correct": "Correct",
   "fb.not_quite": "Not this time",
   "fb.level_up": "Level {n}",
-  "fb.great_speed": "Correct, and quick"
+  "fb.great_speed": "Correct, and quick",
+  "common.undo": "Undo"
 }

@@ -1,0 +1,9 @@
+{
+  "name": "The Echo Eraser",
+  "goal": "Remember only the last few items. When the list stops, tap them in order.",
+  "tip": "Say the last few items softly in your head, and drop the oldest one each time a new one comes.",
+  "voice": ["Items will appear one at a time.", "You do not know when the list will stop.", "Keep only the last few in mind, dropping the oldest each time.", "When it stops, tap the last ones in the same order."],
+  "keep_last": "Keep the last {k} in mind",
+  "recall_last": "Tap the last {k}, in order",
+  "partial": "{n} of {k} in the right place"
+}

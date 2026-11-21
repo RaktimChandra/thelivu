@@ -1,0 +1,15 @@
+{
+  "_doc": "length: items shown; show_s: time per item; numbers: how many are numbers (rest letters); decoys: extra items on the pad that were NOT shown; guide: show the 'numbers then letters' guide line during recall.",
+  "levels": [
+    {"length": 2, "numbers": 1, "show_s": 1.5, "decoys": 0, "guide": true},
+    {"length": 3, "numbers": 2, "show_s": 1.4, "decoys": 0, "guide": true},
+    {"length": 3, "numbers": 1, "show_s": 1.3, "decoys": 0, "guide": false},
+    {"length": 4, "numbers": 2, "show_s": 1.3, "decoys": 0, "guide": true},
+    {"length": 4, "numbers": 2, "show_s": 1.2, "decoys": 1, "guide": false},
+    {"length": 5, "numbers": 3, "show_s": 1.2, "decoys": 1, "guide": false},
+    {"length": 5, "numbers": 2, "show_s": 1.1, "decoys": 2, "guide": false},
+    {"length": 6, "numbers": 3, "show_s": 1.1, "decoys": 2, "guide": false},
+    {"length": 7, "numbers": 4, "show_s": 1.0, "decoys": 2, "guide": false},
+    {"length": 8, "numbers": 4, "show_s": 0.9, "decoys": 2, "guide": false}
+  ]
+}

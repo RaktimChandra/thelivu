@@ -73,7 +73,8 @@ static func title(text: String, size := SIZE_XL, color := INK, align := HORIZONT
 	return l
 
 
-## Buttons: "primary" (teal), "soft" (teal tint), "ghost" (outline), "light" (white on dark).
+## Buttons: "primary" (teal), "soft" (teal tint), "ghost" (outline), "light" (white on dark),
+## "warm" (turmeric tint), "action" (solid turmeric: the one big in-game response button).
 static func button(text: String, kind := "primary", size := SIZE_M, min_h := 96, icon_name := "") -> Button:
 	var b := Button.new()
 	b.text = text
@@ -101,6 +102,8 @@ static func button(text: String, kind := "primary", size := SIZE_M, min_h := 96,
 			bg = PAPER; fg = TEAL_DARK
 		"warm":
 			bg = TURMERIC_SOFT; fg = Color("6a4a0e")
+		"action":
+			bg = TURMERIC; fg = Color("1a1406")
 		_:
 			bg = PAPER; fg = INK
 	var bw := 3 if border != Color.TRANSPARENT else 0

@@ -117,5 +117,6 @@
   "fb.correct": "சரி!",
   "fb.not_quite": "இந்த முறை இல்லை",
   "fb.level_up": "நிலை {n}",
-  "fb.great_speed": "சரி, விரைவாகவும்!"
+  "fb.great_speed": "சரி, விரைவாகவும்!",
+  "common.undo": "திரும்பப் பெறு"
 }

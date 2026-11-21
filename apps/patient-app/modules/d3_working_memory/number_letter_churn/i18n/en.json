@@ -1,0 +1,11 @@
+{
+  "name": "Number–Letter Churn",
+  "goal": "Watch the numbers and letters. Then tap the numbers from smallest to largest, then the letters in A-B-C order.",
+  "tip": "While you watch, start sorting: put each number in its place in your mind, and each letter in its place.",
+  "voice": ["Numbers and letters will appear one at a time, mixed up.", "Then, tap the numbers first, from the smallest to the largest.", "After the numbers, tap the letters in alphabet order.", "Take your time when tapping."],
+  "watch": "Watch and start sorting in your mind",
+  "recall": "Numbers first, then letters",
+  "guide": "Numbers small to big, then letters A to Z",
+  "answer_was": "The order was: {seq}",
+  "alphabet": ["A", "B", "C", "D", "E", "F", "G", "H", "K", "L", "M", "N", "P", "R", "S", "T"]
+}
