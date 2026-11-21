@@ -1,0 +1,11 @@
+{
+  "name": "Number Plate Check",
+  "goal": "Are the two number plates exactly the same?",
+  "tip": "Compare in small parts: the district number, then the letters, then the last four digits.",
+  "voice": ["You will see two number plates.", "If every letter and number is the same, tap Same.", "If anything is different, tap Different.", "Later, the plates will hide quickly, so look carefully."],
+  "prompt": "Same or different?",
+  "same": "Same",
+  "different": "Different",
+  "were_different": "They were different. Look again in parts.",
+  "were_same": "They were the same."
+}

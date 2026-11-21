@@ -1,0 +1,18 @@
+{
+  "name": {"en": "Vegetable market", "ta": "காய்கறிச் சந்தை", "hi": "सब्ज़ी मंडी"},
+  "colour_word": {"en": "Tag colour", "ta": "அடையாள நிறம்", "hi": "टैग का रंग"},
+  "kind_word": {"en": "Vegetable", "ta": "காய்கறி", "hi": "सब्ज़ी"},
+  "complexity": 1,
+  "kinds": [
+    {"id": "carrot", "name": {"en": "Carrot", "ta": "கேரட்", "hi": "गाजर"}},
+    {"id": "eggplant", "name": {"en": "Brinjal", "ta": "கத்தரிக்காய்", "hi": "बैंगन"}},
+    {"id": "onion", "name": {"en": "Onion", "ta": "வெங்காயம்", "hi": "प्याज़"}},
+    {"id": "potato", "name": {"en": "Potato", "ta": "உருளைக்கிழங்கு", "hi": "आलू"}}
+  ],
+  "colours": [
+    {"id": "blue", "hex": "#0072B2", "glyph": "circle", "name": {"en": "Blue", "ta": "நீலம்", "hi": "नीला"}},
+    {"id": "orange", "hex": "#E69F00", "glyph": "triangle", "name": {"en": "Orange", "ta": "ஆரஞ்சு", "hi": "नारंगी"}},
+    {"id": "green", "hex": "#009E73", "glyph": "square", "name": {"en": "Green", "ta": "பச்சை", "hi": "हरा"}},
+    {"id": "pink", "hex": "#CC79A7", "glyph": "star", "name": {"en": "Pink", "ta": "இளஞ்சிவப்பு", "hi": "गुलाबी"}}
+  ]
+}

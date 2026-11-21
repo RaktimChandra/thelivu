@@ -1,0 +1,13 @@
+{
+  "name": "Same as Before",
+  "goal": "Tap MATCH when the picture is the same as the one before.",
+  "tip": "Say the picture softly in your head. When the next one comes, compare it with what you said.",
+  "voice": ["Pictures will move into the box, one at a time.", "If the picture is the same as the one just before it, tap MATCH.", "If it is different, do nothing and wait.", "Later, the game may ask you to compare with the picture two steps back. It will tell you first."],
+  "match": "MATCH",
+  "rule_1": "Same as the last one?",
+  "rule_2": "Same as two before?",
+  "now_rule_1": "Now: same as the last one",
+  "now_rule_2": "Now: same as TWO before",
+  "not_match": "Not a match this time",
+  "missed": "That one was a match"
+}

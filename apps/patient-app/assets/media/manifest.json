@@ -1,0 +1,5 @@
+{
+  "_doc": "Register of every real-photo asset. A photo is shown to patients only when status is 'approved'. Fields: id, file, kind (hand|face|object), source (generated|licensed_dataset|own_photoshoot), generator {model, licence, prompt, seed}, dataset {name, licence, agreement}, consent (model release / synthetic: no real person), intended {emotion, intensity}, validation {raters, agreement, date}, status (draft|in_validation|approved|rejected). Policy: docs/research/THL-RES-002-real-human-media.md",
+  "schema_version": "1.0",
+  "assets": []
+}

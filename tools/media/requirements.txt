@@ -1,0 +1,13 @@
+# Media pipeline for real-human photo assets (hands, faces). Python 3.10+.
+# Local GPU backend (NVIDIA, >= 8 GB VRAM with CPU offload; 16 GB+ system RAM):
+torch>=2.3
+diffusers>=0.32
+transformers>=4.44
+accelerate>=0.33
+sentencepiece
+protobuf
+# Background removal (MIT): used for hands
+rembg[gpu]>=2.0.57
+# Hosted backend (no GPU needed): Hugging Face Inference Providers
+huggingface_hub>=0.26
+pillow>=10.0

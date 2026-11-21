@@ -1,0 +1,22 @@
+{
+  "id": "d1_velocity_nback",
+  "domain": "speed",
+  "status": "official",
+  "order": 2,
+  "protocol_ref": "D1-G2",
+  "version": "1.0.0",
+  "sdk": "1.0",
+  "entry": "velocity_nback.gd",
+  "levels": "levels.json",
+  "themes": ["fruit", "vehicles", "shapes"],
+  "default_theme": "fruit",
+  "trials": {"practice": 10, "main": 30},
+  "start_level": 1,
+  "minutes": 3,
+  "mechanism": "Items stream past a window one at a time; tap MATCH when the item equals the one n steps back.",
+  "metrics": ["hit", "miss (omission)", "false_alarm (commission)", "correct_reject", "rt_ms", "d_prime (server)"],
+  "stair_success": "hit or no false alarm; correct rejections do not move the staircase",
+  "match_rate": 0.3,
+  "alternative": "d1_plate_check",
+  "research": "docs/research/THL-RES-001-domain1-speed-of-processing.md#82"
+}

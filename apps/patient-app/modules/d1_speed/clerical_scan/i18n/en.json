@@ -1,0 +1,11 @@
+{
+  "name": "Quick Find",
+  "goal": "Find the line that matches the dark card exactly.",
+  "tip": "Look at one line at a time, top to bottom. Check the first number first.",
+  "voice": ["Look at the dark card. It shows one line.", "Find the same line in the list below and tap it, as quickly as you can.", "Both the name and the number must match.", "If you cannot find it, tap I can't find it."],
+  "prompt": "Find this line",
+  "cant_find": "I can't find it",
+  "correct_slow": "Correct. Next time, try a little quicker.",
+  "wrong_line": "Not that line. The green one was the match.",
+  "here_it_was": "Here it was, in green."
+}

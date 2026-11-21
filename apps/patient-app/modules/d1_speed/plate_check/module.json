@@ -1,0 +1,21 @@
+{
+  "id": "d1_plate_check",
+  "domain": "speed",
+  "status": "alternative",
+  "replaces": "d1_velocity_nback",
+  "order": 4,
+  "protocol_ref": "D1-G2-ALT (decision D-05)",
+  "version": "1.0.0",
+  "sdk": "1.0",
+  "entry": "plate_check.gd",
+  "levels": "levels.json",
+  "themes": ["private", "commercial", "electric"],
+  "default_theme": "private",
+  "trials": {"practice": 4, "main": 20},
+  "start_level": 2,
+  "minutes": 3,
+  "mechanism": "Two Tamil Nadu number plates: same or different? Pure perceptual comparison speed, no memory load until brief-exposure levels.",
+  "metrics": ["rt_ms", "correct", "false 'same' (miss of a difference)", "false 'different'", "change type"],
+  "stair_success": "correct AND rt <= soft goal",
+  "research": "docs/research/THL-RES-001-domain1-speed-of-processing.md#84"
+}

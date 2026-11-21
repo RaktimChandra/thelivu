@@ -1,0 +1,10 @@
+{
+  "name": {"en": "Shapes", "ta": "வடிவங்கள்", "hi": "आकार"},
+  "track": "#dde9e6", "track_edge": "#b5ccc6", "window": "#ffffff",
+  "complexity": 1,
+  "items": [
+    {"id": "circle", "group": "a"}, {"id": "square", "group": "b"}, {"id": "triangle", "group": "c"},
+    {"id": "star", "group": "d"}, {"id": "hexagon", "group": "e"}, {"id": "ring", "group": "a"},
+    {"id": "diamond", "group": "b"}, {"id": "arrow", "group": "c"}, {"id": "plus", "group": "d"}, {"id": "pentagon", "group": "e"}
+  ]
+}

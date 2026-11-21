@@ -1,0 +1,9 @@
+{
+  "name": "Sort It",
+  "goal": "Put each item in the right box. The sign says how.",
+  "tip": "Check the sign first, then look only at that one thing: the colour, or the type.",
+  "voice": ["An item will appear in the middle.", "Tap the box it belongs in, as quickly as you can.", "The sign at the top tells you how to sort: by colour, or by type.", "Watch the sign. Sometimes it changes."],
+  "by_colour": "Sort by COLOUR",
+  "by_kind": "Sort by TYPE",
+  "check_sign": "Check the sign, then try the next one"
+}

@@ -1,0 +1,60 @@
+; Thelivu patient app — Godot 4.5 project file.
+; Renderer: GL Compatibility (OpenGL ES 3 / WebGL 2) for low-cost Android phones and the web demo.
+
+config_version=5
+
+[application]
+
+config/name="Thelivu"
+config/description="Cognitive remediation training app (patient client)."
+config/version="0.1.0"
+run/main_scene="res://shell/boot.tscn"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.909804, 0.941176, 0.933333, 1)
+boot_splash/show_image=false
+
+[autoload]
+
+Bus="*res://core/event_bus.gd"
+Store="*res://core/services/store.gd"
+I18n="*res://core/services/i18n.gd"
+Sfx="*res://core/services/sfx.gd"
+Voice="*res://core/services/voice.gd"
+Telemetry="*res://core/services/telemetry.gd"
+Modules="*res://core/services/module_registry.gd"
+App="*res://core/app.gd"
+
+[audio]
+
+general/text_to_speech=true
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/size/window_width_override=405
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[gui]
+
+common/snap_controls_to_pixels=true
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/fallback="en"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.909804, 0.941176, 0.933333, 1)
+anti_aliasing/quality/msaa_2d=1

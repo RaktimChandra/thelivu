@@ -1,0 +1,15 @@
+{
+  "set": "hands_v1",
+  "kind": "hand",
+  "model": "black-forest-labs/FLUX.1-schnell",
+  "licence": "Apache-2.0 (commercial use allowed)",
+  "size": [768, 1024],
+  "remove_background": true,
+  "base_prompt": "Studio photograph of a real adult South Indian person's {side} hand, {pose}, natural brown skin with realistic texture, short clean nails, no rings, no sleeve visible, plain pure white background, soft even daylight, sharp focus, photorealistic, centered",
+  "items": [
+    {"id": "hands/point", "side": "right", "pose": "index finger extended pointing straight up, other fingers curled into palm, back of hand facing camera", "tip": [0.42, 0.04], "seeds": [7, 21, 42, 88]},
+    {"id": "hands/tap", "side": "right", "pose": "index finger pressing down gently, seen from above at 45 degrees", "seeds": [7, 21]},
+    {"id": "hands/open", "side": "right", "pose": "open palm facing camera, fingers together, relaxed", "seeds": [7, 21]},
+    {"id": "hands/hold_coin", "side": "right", "pose": "holding a one rupee coin between thumb and index finger", "seeds": [7, 21]}
+  ]
+}

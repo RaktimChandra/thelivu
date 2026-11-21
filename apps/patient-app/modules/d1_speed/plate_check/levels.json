@@ -1,0 +1,15 @@
+{
+  "_doc": "change: obvious (another district/series) | lookalike (one look-alike character, e.g. 8/B, 0/D) | transpose (two neighbours swapped) | mixed; exposure_s: 0 = plates stay, else plates are covered after this time; goal_s: soft time goal.",
+  "levels": [
+    {"change": "obvious",   "exposure_s": 0,   "goal_s": 4.0},
+    {"change": "obvious",   "exposure_s": 0,   "goal_s": 3.5},
+    {"change": "lookalike", "exposure_s": 0,   "goal_s": 3.5},
+    {"change": "lookalike", "exposure_s": 0,   "goal_s": 3.0},
+    {"change": "transpose", "exposure_s": 0,   "goal_s": 3.0},
+    {"change": "mixed",     "exposure_s": 0,   "goal_s": 2.6},
+    {"change": "mixed",     "exposure_s": 2.0, "goal_s": 2.6},
+    {"change": "mixed",     "exposure_s": 1.5, "goal_s": 2.4},
+    {"change": "mixed",     "exposure_s": 1.0, "goal_s": 2.2},
+    {"change": "mixed",     "exposure_s": 0.8, "goal_s": 2.0}
+  ]
+}

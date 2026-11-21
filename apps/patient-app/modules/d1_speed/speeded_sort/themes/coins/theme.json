@@ -1,0 +1,18 @@
+{
+  "name": {"en": "Shop counter", "ta": "கடை கவுண்டர்", "hi": "दुकान का काउंटर"},
+  "colour_word": {"en": "Drawer colour", "ta": "இழுப்பறை நிறம்", "hi": "दराज़ का रंग"},
+  "kind_word": {"en": "Kind of money", "ta": "பண வகை", "hi": "पैसे का प्रकार"},
+  "complexity": 1,
+  "kinds": [
+    {"id": "coin", "name": {"en": "Coin", "ta": "நாணயம்", "hi": "सिक्का"}},
+    {"id": "note", "name": {"en": "Note", "ta": "நோட்டு", "hi": "नोट"}},
+    {"id": "bag", "name": {"en": "Cash bag", "ta": "பணப் பை", "hi": "पैसों की थैली"}},
+    {"id": "card", "name": {"en": "Card", "ta": "அட்டை", "hi": "कार्ड"}}
+  ],
+  "colours": [
+    {"id": "blue", "hex": "#0072B2", "glyph": "circle", "name": {"en": "Blue", "ta": "நீலம்", "hi": "नीला"}},
+    {"id": "orange", "hex": "#E69F00", "glyph": "triangle", "name": {"en": "Orange", "ta": "ஆரஞ்சு", "hi": "नारंगी"}},
+    {"id": "green", "hex": "#009E73", "glyph": "square", "name": {"en": "Green", "ta": "பச்சை", "hi": "हरा"}},
+    {"id": "pink", "hex": "#CC79A7", "glyph": "star", "name": {"en": "Pink", "ta": "இளஞ்சிவப்பு", "hi": "गुलाबी"}}
+  ]
+}

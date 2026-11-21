@@ -1,0 +1,15 @@
+{
+  "_doc": "n: steps back; items: distinct items in play; show_s: time the item stays in the window (the stream speed); gap_s: empty time between items; lure: chance a non-match is a look-alike or an n-1 lure.",
+  "levels": [
+    {"n": 1, "items": 3, "show_s": 2.0, "gap_s": 0.8, "lure": 0.0},
+    {"n": 1, "items": 4, "show_s": 1.8, "gap_s": 0.7, "lure": 0.0},
+    {"n": 1, "items": 5, "show_s": 1.6, "gap_s": 0.6, "lure": 0.15},
+    {"n": 1, "items": 6, "show_s": 1.4, "gap_s": 0.5, "lure": 0.25},
+    {"n": 1, "items": 8, "show_s": 1.2, "gap_s": 0.4, "lure": 0.3},
+    {"n": 2, "items": 4, "show_s": 2.0, "gap_s": 0.8, "lure": 0.0},
+    {"n": 2, "items": 5, "show_s": 1.8, "gap_s": 0.7, "lure": 0.15},
+    {"n": 2, "items": 6, "show_s": 1.6, "gap_s": 0.6, "lure": 0.25},
+    {"n": 2, "items": 7, "show_s": 1.4, "gap_s": 0.5, "lure": 0.3},
+    {"n": 2, "items": 8, "show_s": 1.2, "gap_s": 0.4, "lure": 0.35}
+  ]
+}

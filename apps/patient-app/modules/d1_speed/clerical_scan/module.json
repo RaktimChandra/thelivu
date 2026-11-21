@@ -1,0 +1,20 @@
+{
+  "id": "d1_clerical_scan",
+  "domain": "speed",
+  "status": "official",
+  "order": 1,
+  "protocol_ref": "D1-G1",
+  "version": "1.0.0",
+  "sdk": "1.0",
+  "entry": "clerical_scan.gd",
+  "levels": "levels.json",
+  "themes": ["bus", "kirana", "medicine"],
+  "default_theme": "bus",
+  "trials": {"practice": 4, "main": 16},
+  "start_level": 2,
+  "minutes": 5,
+  "mechanism": "Visual search: find the one line in a realistic document that matches the target exactly.",
+  "metrics": ["rt_ms", "correct", "commission (wrong line)", "omission (can't find / idle)", "within_soft_goal"],
+  "stair_success": "correct AND rt <= soft goal",
+  "research": "docs/research/THL-RES-001-domain1-speed-of-processing.md#81"
+}

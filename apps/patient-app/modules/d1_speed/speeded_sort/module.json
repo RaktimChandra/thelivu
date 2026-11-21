@@ -1,0 +1,20 @@
+{
+  "id": "d1_speeded_sort",
+  "domain": "speed",
+  "status": "official",
+  "order": 3,
+  "protocol_ref": "D1-G3",
+  "version": "1.0.0",
+  "sdk": "1.0",
+  "entry": "speeded_sort.gd",
+  "levels": "levels.json",
+  "themes": ["post", "vegetables", "coins"],
+  "default_theme": "post",
+  "trials": {"practice": 6, "main": 24},
+  "start_level": 2,
+  "minutes": 3,
+  "mechanism": "One item at a time; tap the bin it belongs to, following the sign (by colour or by type). Later levels switch the rule.",
+  "metrics": ["rt_ms", "correct", "wrong bin (commission)", "switch vs repeat trials (switch cost, server)", "congruent vs conflict"],
+  "stair_success": "correct AND rt <= soft goal",
+  "research": "docs/research/THL-RES-001-domain1-speed-of-processing.md#83"
+}

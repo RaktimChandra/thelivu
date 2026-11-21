@@ -1,0 +1,10 @@
+{
+  "name": {"en": "Road", "ta": "சாலை", "hi": "सड़क"},
+  "track": "#cfd6de", "track_edge": "#9aa6b2", "window": "#ffffff",
+  "complexity": 1,
+  "items": [
+    {"id": "auto", "group": "a"}, {"id": "bus", "group": "b"}, {"id": "car", "group": "c"},
+    {"id": "bicycle", "group": "d"}, {"id": "truck", "group": "b"}, {"id": "taxi", "group": "c"},
+    {"id": "scooter", "group": "d"}, {"id": "motorcycle", "group": "d"}, {"id": "minibus", "group": "b"}, {"id": "tractor", "group": "e"}
+  ]
+}

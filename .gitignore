@@ -1,0 +1,30 @@
+# Build outputs
+build/
+*.apk
+*.aab
+# Godot
+apps/patient-app/.godot/
+apps/patient-app/android/
+*.translation
+# Media pipeline staging (candidates are reviewed, only approved files go in assets)
+tools/media/out/
+# Python / Node / Go
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+dist/
+coverage/
+go.work
+go.work.sum
+# Secrets and local config
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

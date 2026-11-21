@@ -1,0 +1,10 @@
+{
+  "name": {"en": "Fruit cart", "ta": "பழ வண்டி", "hi": "फलों का ठेला"},
+  "track": "#e9dcc3", "track_edge": "#c9b48d", "window": "#ffffff",
+  "complexity": 1,
+  "items": [
+    {"id": "mango", "group": "a"}, {"id": "banana", "group": "b"}, {"id": "apple", "group": "c"},
+    {"id": "grapes", "group": "d"}, {"id": "coconut", "group": "e"}, {"id": "lemon", "group": "b"},
+    {"id": "peach", "group": "c"}, {"id": "orange", "group": "a"}, {"id": "pear", "group": "f"}, {"id": "watermelon", "group": "e"}
+  ]
+}

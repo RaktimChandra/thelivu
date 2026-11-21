@@ -1,0 +1,15 @@
+{
+  "_doc": "bins: 2-4; rule: colour | kind | mixed (bins show both features, the sign decides); switch: 0 none, k = switch every k items, -1 = unpredictable (p 0.33); goal_s: soft time goal.",
+  "levels": [
+    {"bins": 2, "rule": "colour", "switch": 0,  "goal_s": 2.8},
+    {"bins": 2, "rule": "kind",   "switch": 0,  "goal_s": 2.6},
+    {"bins": 3, "rule": "colour", "switch": 0,  "goal_s": 2.5},
+    {"bins": 3, "rule": "kind",   "switch": 0,  "goal_s": 2.4},
+    {"bins": 3, "rule": "mixed",  "switch": 4,  "goal_s": 2.4},
+    {"bins": 4, "rule": "mixed",  "switch": 4,  "goal_s": 2.2},
+    {"bins": 4, "rule": "mixed",  "switch": 3,  "goal_s": 2.0},
+    {"bins": 4, "rule": "mixed",  "switch": -1, "goal_s": 1.9},
+    {"bins": 4, "rule": "mixed",  "switch": -1, "goal_s": 1.75},
+    {"bins": 4, "rule": "mixed",  "switch": -1, "goal_s": 1.6}
+  ]
+}

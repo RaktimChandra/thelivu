@@ -1,0 +1,36 @@
+{
+  "set": "faces_v1",
+  "kind": "face",
+  "purpose": "Domain 7 (social cognition): facial emotion recognition, intensity, and social-perception games. Synthetic identities = no real person's likeness, no consent burden, commercial-safe. Every image must pass the rater validation in THL-RES-002 before status becomes 'approved'.",
+  "model": "black-forest-labs/FLUX.1-schnell",
+  "edit_model": "Qwen/Qwen-Image-Edit-2509",
+  "licence": "Apache-2.0 (both models)",
+  "size": [768, 1024],
+  "remove_background": false,
+  "base_prompt": "Passport-style colour photograph of a real {age}-year-old {region} {sex}, {skin} skin, {hair}, wearing a plain {top}, looking straight at the camera, head and shoulders, plain light grey background, soft even studio light, neutral relaxed expression, mouth closed, photorealistic, natural skin texture, no makeup look, no jewellery except small studs",
+  "expression_prompt": "Change only the facial expression to {expression}, at {intensity} intensity. Keep the same person, identity, hair, clothes, lighting, camera angle and background exactly the same.",
+  "expressions": {
+    "happy": "a genuine happy smile (Duchenne smile)",
+    "sad": "sadness: inner eyebrows raised, lip corners down",
+    "angry": "anger: lowered drawn-together eyebrows, tense lips pressed together",
+    "fear": "fear: eyebrows raised and drawn together, upper eyelids raised, lips stretched",
+    "surprise": "surprise: eyebrows raised high, eyes wide open, jaw dropped open",
+    "disgust": "disgust: nose wrinkled, upper lip raised",
+    "neutral": "a relaxed neutral face"
+  },
+  "intensities": ["low", "high"],
+  "identities": [
+    {"id": "f01", "age": 24, "region": "Tamil", "sex": "woman", "skin": "deep brown", "hair": "long black hair tied back", "top": "teal cotton kurta"},
+    {"id": "f02", "age": 33, "region": "Tamil", "sex": "man", "skin": "medium brown", "hair": "short black hair, thin moustache", "top": "white cotton shirt"},
+    {"id": "f03", "age": 47, "region": "Tamil", "sex": "woman", "skin": "brown", "hair": "black hair with grey strands in a bun", "top": "maroon blouse"},
+    {"id": "f04", "age": 58, "region": "Tamil", "sex": "man", "skin": "dark brown", "hair": "short grey hair, clean shaven", "top": "light blue shirt"},
+    {"id": "f05", "age": 29, "region": "Malayali", "sex": "woman", "skin": "light brown", "hair": "shoulder-length wavy black hair", "top": "mustard top"},
+    {"id": "f06", "age": 38, "region": "Malayali", "sex": "man", "skin": "medium brown", "hair": "black hair, full short beard", "top": "grey t-shirt"},
+    {"id": "f07", "age": 26, "region": "Telugu", "sex": "man", "skin": "brown", "hair": "short wavy black hair", "top": "navy polo shirt"},
+    {"id": "f08", "age": 42, "region": "Telugu", "sex": "woman", "skin": "deep brown", "hair": "black hair in a braid", "top": "green cotton saree blouse"},
+    {"id": "f09", "age": 35, "region": "Kannadiga", "sex": "woman", "skin": "medium brown", "hair": "short black bob", "top": "white kurta"},
+    {"id": "f10", "age": 51, "region": "Kannadiga", "sex": "man", "skin": "brown", "hair": "receding black hair, grey moustache", "top": "checked shirt"},
+    {"id": "f11", "age": 31, "region": "North Indian", "sex": "man", "skin": "light brown", "hair": "short black hair, stubble", "top": "olive kurta"},
+    {"id": "f12", "age": 45, "region": "North Indian", "sex": "woman", "skin": "wheatish", "hair": "black hair with centre parting", "top": "peach salwar top"}
+  ]
+}
